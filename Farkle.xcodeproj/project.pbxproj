@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		471CB1341BC7053200FC4D48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 471CB1331BC7053200FC4D48 /* main.m */; };
 		471CB1371BC7053200FC4D48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 471CB1361BC7053200FC4D48 /* AppDelegate.m */; };
-		471CB13A1BC7053200FC4D48 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471CB1391BC7053200FC4D48 /* ViewController.m */; };
 		471CB13D1BC7053200FC4D48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 471CB13B1BC7053200FC4D48 /* Main.storyboard */; };
 		471CB13F1BC7053200FC4D48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 471CB13E1BC7053200FC4D48 /* Assets.xcassets */; };
 		471CB1421BC7053300FC4D48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 471CB1401BC7053300FC4D48 /* LaunchScreen.storyboard */; };
 		471CB14D1BC7053300FC4D48 /* FarkleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 471CB14C1BC7053300FC4D48 /* FarkleTests.m */; };
 		471CB1581BC7053300FC4D48 /* FarkleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 471CB1571BC7053300FC4D48 /* FarkleUITests.m */; };
+		471CB1671BC705DF00FC4D48 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471CB1661BC705DF00FC4D48 /* RootViewController.m */; settings = {ASSET_TAGS = (); }; };
+		471CB1701BC73F2C00FC4D48 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 471CB16F1BC73F2C00FC4D48 /* Player.m */; settings = {ASSET_TAGS = (); }; };
+		471CB1731BC7442600FC4D48 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471CB1721BC7442600FC4D48 /* GameViewController.m */; settings = {ASSET_TAGS = (); }; };
+		471CB1761BC76E1E00FC4D48 /* DiceLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 471CB1751BC76E1E00FC4D48 /* DiceLabel.m */; settings = {ASSET_TAGS = (); }; };
+		471CB1C71BC85F8500FC4D48 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 471CB1C61BC85F8500FC4D48 /* GameManager.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +43,6 @@
 		471CB1331BC7053200FC4D48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		471CB1351BC7053200FC4D48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		471CB1361BC7053200FC4D48 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		471CB1381BC7053200FC4D48 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		471CB1391BC7053200FC4D48 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		471CB13C1BC7053200FC4D48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		471CB13E1BC7053200FC4D48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		471CB1411BC7053300FC4D48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +53,16 @@
 		471CB1531BC7053300FC4D48 /* FarkleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FarkleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		471CB1571BC7053300FC4D48 /* FarkleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FarkleUITests.m; sourceTree = "<group>"; };
 		471CB1591BC7053300FC4D48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		471CB1651BC705DF00FC4D48 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		471CB1661BC705DF00FC4D48 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		471CB16E1BC73F2C00FC4D48 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		471CB16F1BC73F2C00FC4D48 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		471CB1711BC7442600FC4D48 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		471CB1721BC7442600FC4D48 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		471CB1741BC76E1E00FC4D48 /* DiceLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiceLabel.h; sourceTree = "<group>"; };
+		471CB1751BC76E1E00FC4D48 /* DiceLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiceLabel.m; sourceTree = "<group>"; };
+		471CB1C51BC85F8500FC4D48 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
+		471CB1C61BC85F8500FC4D48 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,13 +115,21 @@
 			children = (
 				471CB1351BC7053200FC4D48 /* AppDelegate.h */,
 				471CB1361BC7053200FC4D48 /* AppDelegate.m */,
-				471CB1381BC7053200FC4D48 /* ViewController.h */,
-				471CB1391BC7053200FC4D48 /* ViewController.m */,
 				471CB13B1BC7053200FC4D48 /* Main.storyboard */,
 				471CB13E1BC7053200FC4D48 /* Assets.xcassets */,
 				471CB1401BC7053300FC4D48 /* LaunchScreen.storyboard */,
 				471CB1431BC7053300FC4D48 /* Info.plist */,
 				471CB1321BC7053200FC4D48 /* Supporting Files */,
+				471CB1651BC705DF00FC4D48 /* RootViewController.h */,
+				471CB1661BC705DF00FC4D48 /* RootViewController.m */,
+				471CB16E1BC73F2C00FC4D48 /* Player.h */,
+				471CB16F1BC73F2C00FC4D48 /* Player.m */,
+				471CB1711BC7442600FC4D48 /* GameViewController.h */,
+				471CB1721BC7442600FC4D48 /* GameViewController.m */,
+				471CB1741BC76E1E00FC4D48 /* DiceLabel.h */,
+				471CB1751BC76E1E00FC4D48 /* DiceLabel.m */,
+				471CB1C51BC85F8500FC4D48 /* GameManager.h */,
+				471CB1C61BC85F8500FC4D48 /* GameManager.m */,
 			);
 			path = Farkle;
 			sourceTree = "<group>";
@@ -270,9 +290,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				471CB13A1BC7053200FC4D48 /* ViewController.m in Sources */,
 				471CB1371BC7053200FC4D48 /* AppDelegate.m in Sources */,
+				471CB1731BC7442600FC4D48 /* GameViewController.m in Sources */,
+				471CB1761BC76E1E00FC4D48 /* DiceLabel.m in Sources */,
 				471CB1341BC7053200FC4D48 /* main.m in Sources */,
+				471CB1671BC705DF00FC4D48 /* RootViewController.m in Sources */,
+				471CB1C71BC85F8500FC4D48 /* GameManager.m in Sources */,
+				471CB1701BC73F2C00FC4D48 /* Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

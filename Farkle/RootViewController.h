@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RootViewController.h
 //  Farkle
 //
 //  Created by Francis Bato on 10/8/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface RootViewController : UIViewController
 
 @end
-
