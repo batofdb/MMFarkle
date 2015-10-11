@@ -23,6 +23,7 @@
 @property NSMutableArray *hand;
 @property BOOL hasScored;
 @property NSMutableArray *discard;
+@property BOOL allDiceUsed;
 
 
 
@@ -35,6 +36,8 @@
 - (NSInteger)findIndexUsingPlayerName:(Player *)player;
 - (void)setPlayerOrder;
 - (NSInteger)calculateScoreWithHand;
+- (void)resetDice;
+- (void)discardDice;
 
 
 

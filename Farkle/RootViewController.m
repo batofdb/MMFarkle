@@ -42,6 +42,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
     cell.textLabel.text = [[self.players objectAtIndex:indexPath.row] name];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%li",[[self.players objectAtIndex:indexPath.row] score]];
+
     return cell;
 }
 
@@ -94,12 +96,14 @@
 }
 
 - (void)checkPlayerCount {
-    if (self.playerCount >= 2)
+    if (self.playerCount >= 2) {
         self.playButton.enabled = YES;
-    else
+        self.view.backgroundColor = UIColorFromRGB(0xD1C4E9);
+    } else {
         self.playButton.enabled = NO;
+        self.view.backgroundColor = [UIColor whiteColor];
+    }
 }
-
 
 
 

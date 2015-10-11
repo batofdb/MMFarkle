@@ -13,7 +13,8 @@
 
 @property NSNumber *dieValue;
 @property BOOL isSelected;
-@property BOOL beforeRoll;
+@property BOOL isDiscard;
+@property NSInteger dieID;
 
 
 - (instancetype)initDice:(NSNumber *)index;

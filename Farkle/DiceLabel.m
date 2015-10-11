@@ -17,6 +17,7 @@
     if (self) {
         self.dieValue = @1;
         self.isSelected = YES;
+        self.isDiscard = YES;
     }
 
     return self;
