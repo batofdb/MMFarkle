@@ -27,7 +27,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *bankButtonLabel;
 @property NSInteger currentScore;
 @property NSArray *colorArray;
-
+@property (weak, nonatomic) IBOutlet UIButton *rollButtonLabel;
+@property UIDynamicAnimator *dynamicAnimator;
+@property BOOL areDiceFanned;
+@property NSInteger roundScore;
 @end
 
 @implementation GameViewController
@@ -79,6 +82,8 @@
     self.currentPlayer = [self.gameManager whichPlayerIsNext];
     [self.gameManager startPlayersTurn:self.currentPlayer withDice:self.diceLabels];
     [self updateGameBoard];
+
+    self.dynamicAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)sender
@@ -92,9 +97,9 @@
             [self onTappedDice:selectedDice];
 
             if (selectedDice.isSelected) {
-                selectedDice.backgroundColor = [UIColor redColor];
+                selectedDice.backgroundColor = UIColorFromRGB(0xE0E0E0);
             } else
-                selectedDice.backgroundColor = [UIColor greenColor];
+                selectedDice.backgroundColor = [UIColor whiteColor];
 
             if ([self.gameManager.hand count]>0)
                 self.bankButtonLabel.enabled = YES;
@@ -106,6 +111,7 @@
     }
 }
 - (IBAction)onRollButtonPressed:(UIButton *)sender {
+    //[self fanButton:sender];
     [self rollDice];
     self.currentPlayer.hasRolled = YES;
     [self updateGameBoard];
@@ -172,7 +178,7 @@
         dice.isDiscard = NO;
         dice.dieID = count;
         count++;
-        dice.backgroundColor = [UIColor grayColor];
+        dice.backgroundColor = [UIColor whiteColor];
     }
 
     [self.gameManager resetDice];
@@ -181,7 +187,6 @@
 
 
 - (IBAction)onBankButtonTapped:(UIButton *)sender {
-    [self.gameManager discardDice];
     [self updateDice];
     NSInteger tempScore = [self.gameManager calculateScoreWithHand];
 
@@ -190,7 +195,7 @@
     }
 
     self.gameManager.activePlayer.score += tempScore;
-
+    self.gameManager.activePlayer.roundScore +=tempScore;
     if (self.gameManager.allDiceUsed){
         [self initDice];
         [self.gameManager startPlayersTurn:self.currentPlayer withDice:self.diceLabels];
@@ -198,9 +203,9 @@
     }
     
     [self updateScore];
-
-
-
+    [self.gameManager discardDice];
+    self.gameManager.firstRoll = YES;
+    self.bankButtonLabel.enabled = NO;
 }
 
 - (void)farkleAlert {
@@ -215,7 +220,10 @@
 }
 
 - (IBAction)onDoneButtonTapped:(UIButton *)sender {
+    self.roundScore = self.gameManager.activePlayer.roundScore;
     [self scoreAlertWithCurrentScore:self.gameManager.currentScore];
+    self.roundScore = 0;
+    self.gameManager.activePlayer.roundScore = 0;
 }
 
 - (void)endPlayerAction {
@@ -236,7 +244,7 @@
 }
 
 - (void)scoreAlertWithCurrentScore:(NSInteger)currentScore {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"This Round" message:[NSString stringWithFormat:@"You score %li this round. Total Score: %li",currentScore, self.currentPlayer.score] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"This Round" message:[NSString stringWithFormat:@"You score %li this round. Total Score: %li",self.roundScore, self.currentPlayer.score] preferredStyle:UIAlertControllerStyleAlert];
 
     UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [self endPlayerAction];
@@ -244,6 +252,75 @@
 
     [alert addAction:okButton];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+#pragma mark - animation
+
+- (void) fanIn {
+    UISnapBehavior *snapBehavior;
+    snapBehavior = [[UISnapBehavior alloc] initWithItem:self.diceLabelOne snapToPoint:self.rollButtonLabel.center];
+    [self.dynamicAnimator addBehavior:snapBehavior];
+
+    snapBehavior = [[UISnapBehavior alloc] initWithItem:self.diceLabelTwo snapToPoint:self.rollButtonLabel.center];
+    [self.dynamicAnimator addBehavior:snapBehavior];
+
+    snapBehavior = [[UISnapBehavior alloc] initWithItem:self.diceLabelThree snapToPoint:self.rollButtonLabel.center];
+    [self.dynamicAnimator addBehavior:snapBehavior];
+
+    snapBehavior = [[UISnapBehavior alloc] initWithItem:self.diceLabelFour snapToPoint:self.rollButtonLabel.center];
+    [self.dynamicAnimator addBehavior:snapBehavior];
+
+    snapBehavior = [[UISnapBehavior alloc] initWithItem:self.diceLabelFive snapToPoint:self.rollButtonLabel.center];
+    [self.dynamicAnimator addBehavior:snapBehavior];
+
+    snapBehavior = [[UISnapBehavior alloc] initWithItem:self.diceLabelSix snapToPoint:self.rollButtonLabel.center];
+    [self.dynamicAnimator addBehavior:snapBehavior];
+
+}
+
+- (void) fanOut {
+
+    CGPoint point;
+    UISnapBehavior *snapBehavior;
+    point = CGPointMake(self.rollButtonLabel.center.x - 80, self.rollButtonLabel.center.y - (self.view.frame.size.height/2)-20);
+    snapBehavior = [[UISnapBehavior alloc] initWithItem:self.diceLabelOne snapToPoint:point];
+    [self.dynamicAnimator addBehavior:snapBehavior];
+
+
+    point = CGPointMake(self.rollButtonLabel.center.x, self.rollButtonLabel.center.y - (self.view.frame.size.height/2)-20);
+    snapBehavior = [[UISnapBehavior alloc] initWithItem:self.diceLabelTwo snapToPoint:point];
+    [self.dynamicAnimator addBehavior:snapBehavior];
+
+    point = CGPointMake(self.rollButtonLabel.center.x + 80,  self.rollButtonLabel.center.y - (self.view.frame.size.height/2)-20);
+    snapBehavior = [[UISnapBehavior alloc] initWithItem:self.diceLabelThree snapToPoint:point];
+    [self.dynamicAnimator addBehavior:snapBehavior];
+
+    point = CGPointMake(self.rollButtonLabel.center.x - 80, self.rollButtonLabel.center.y - (self.view.frame.size.height/2)+45);
+    snapBehavior = [[UISnapBehavior alloc] initWithItem:self.diceLabelFour snapToPoint:point];
+    [self.dynamicAnimator addBehavior:snapBehavior];
+
+
+    point = CGPointMake(self.rollButtonLabel.center.x, self.rollButtonLabel.center.y - (self.view.frame.size.height/2)+45);
+    snapBehavior = [[UISnapBehavior alloc] initWithItem:self.diceLabelFive snapToPoint:point];
+    [self.dynamicAnimator addBehavior:snapBehavior];
+
+    point = CGPointMake(self.rollButtonLabel.center.x + 80, self.rollButtonLabel.center.y - (self.view.frame.size.height/2)+45);
+    snapBehavior = [[UISnapBehavior alloc] initWithItem:self.diceLabelSix snapToPoint:point];
+    [self.dynamicAnimator addBehavior:snapBehavior];
+}
+
+- (void) fanButton:(id)sender {
+
+    [self.dynamicAnimator removeAllBehaviors];
+
+    if (self.areDiceFanned)
+        [self fanIn];
+    else
+        [self fanOut];
+
+    self.areDiceFanned ^= YES;
+    
 }
 
 

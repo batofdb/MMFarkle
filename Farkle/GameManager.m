@@ -108,7 +108,7 @@
         //}
     }
 
-    [self discardDice];
+    //[self discardDice];
 
 }
 
@@ -118,6 +118,8 @@
         if (!self.firstRoll && dice.isSelected)
             dice.isDiscard = YES;
     }
+
+    [self.hand removeAllObjects];
 }
 
 //No objects are being added to the array
@@ -146,7 +148,8 @@
 
     NSCountedSet *set = [[NSCountedSet alloc] initWithArray:temp];
     self.hasScored = NO;
-/*
+    self.currentScore = 0;
+
     if ([set countForObject:@1] == 6){
         self.currentScore = 3000;
     }  else if ([set countForObject:@2] == 6){
@@ -173,19 +176,19 @@
         self.currentScore = 3000;
     }  else if ([set countForObject:@6] == 6){
         self.currentScore = 3000;
-    } else if ([set countForObject:@1] == 3){
-            self.currentScore = 300;
-        }  else if ([set countForObject:@2] == 3){
-            self.currentScore = 200;
-        }  else if ([set countForObject:@3] == 3){
-            self.currentScore = 300;
-        }  else if ([set countForObject:@4] == 3){
-            self.currentScore = 400;
-        } else if ([set countForObject:@5] == 3){
-            self.currentScore = 500;
-        } else if ([set countForObject:@6] == 3){
-            self.currentScore = 600;
-        }  else if ([set countForObject:@1] == 4){
+    }    else if ([set countForObject:@1] == 5){
+        self.currentScore = 2000;
+    }  else if ([set countForObject:@2] == 5){
+        self.currentScore = 2000;
+    }  else if ([set countForObject:@3] == 5){
+        self.currentScore = 2000;
+    }  else if ([set countForObject:@4] == 5){
+        self.currentScore = 2000;
+    } else if ([set countForObject:@5] == 5){
+        self.currentScore = 2000;
+    }  else if ([set countForObject:@6] == 5){
+        self.currentScore = 2000;
+    }  else if ([set countForObject:@1] == 4){
             self.currentScore = 1000;
         }  else if ([set countForObject:@2] == 4){
             self.currentScore = 1000;
@@ -197,45 +200,23 @@
             self.currentScore = 1000;
         }  else if ([set countForObject:@6] == 4){
             self.currentScore = 1000;
-        }   else if ([set countForObject:@1] == 5){
-            self.currentScore = 2000;
-        }  else if ([set countForObject:@2] == 5){
-            self.currentScore = 2000;
-        }  else if ([set countForObject:@3] == 5){
-            self.currentScore = 2000;
-        }  else if ([set countForObject:@4] == 5){
-            self.currentScore = 2000;
-        } else if ([set countForObject:@5] == 5){
-            self.currentScore = 2000;
-        }  else if ([set countForObject:@6] == 5){
-            self.currentScore = 2000;
-        } else if ([set countForObject:@1] == 1){
-            self.currentScore = 100;
-        }  else if ([set countForObject:@1] == 2){
-            self.currentScore = 200;
+        }  else if ([set countForObject:@1] == 3){
+            self.currentScore += 300;
+        } else if ([set countForObject:@2] == 3){
+            self.currentScore += 200;
+        }  else if ([set countForObject:@3] == 3){
+            self.currentScore += 300;
+        }  else if ([set countForObject:@4] == 3){
+            self.currentScore += 400;
+        } else if ([set countForObject:@5] == 3){
+            self.currentScore += 500;
+        } else if ([set countForObject:@6] == 3){
+            self.currentScore += 600;
+        }  else if ([set countForObject:@1] == 1){
+            self.currentScore += 100;
         } else if ([set countForObject:@5] == 1){
-            self.currentScore = 50;
-        } else if ([set countForObject:@5] == 2){
-                self.currentScore = 100;
+            self.currentScore += 50;
         } else {
-            self.currentScore = 0;
-        }
-*/
-    self.currentScore = 0;
-
-    if ([set countForObject:@1] == 3){
-        self.currentScore += 300;
-    }  else if ([set countForObject:@2] == 3){
-        self.currentScore += 200;
-    }  else if ([set countForObject:@3] == 3){
-        self.currentScore += 300;
-    }  else if ([set countForObject:@4] == 3){
-        self.currentScore += 400;
-    } else if ([set countForObject:@5] == 3){
-        self.currentScore += 500;
-    } else if ([set countForObject:@6] == 3){
-        self.currentScore += 600;
-    } else {
         self.currentScore = 0;
     }
 

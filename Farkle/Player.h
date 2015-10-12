@@ -13,6 +13,7 @@
 @property NSString *name;
 @property BOOL isPlaying;
 @property NSInteger score;
+@property NSInteger roundScore;
 @property BOOL isSelected;
 @property BOOL firstRoll;
 @property BOOL hasRolled;

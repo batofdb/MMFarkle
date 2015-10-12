@@ -16,6 +16,7 @@
         self.name = name;
         self.score = 0;
         self.isPlaying = NO;
+        self.roundScore = 0;
     }
 
     return self;
